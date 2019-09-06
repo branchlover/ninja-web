@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" *ngIf="authService.isAuthenticated()">Welcome {{ dataService.getNinja() }}</a>
+    <a class="navbar-brand" *ngIf="!authService.isAuthenticated()">Dojo</a>
+    
+    <!-- Toggler/collapsibe Button -->
+    <button *ngIf="authService.isAuthenticated(); else loginButton" 
+    (click)="logout()" class="ml-auto btn btn-green" type="button">
+        Logout
+    </button>
+
+    <ng-template #loginButton>
+        <button  (click)="toLogin()" class="ml-auto btn btn-green" type="button">
+            Login
+        </button>
+    </ng-template>
+</nav>
